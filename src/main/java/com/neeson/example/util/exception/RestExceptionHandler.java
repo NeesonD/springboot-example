@@ -28,20 +28,20 @@ public class RestExceptionHandler {
 
     @ExceptionHandler
     private <T>ResponseResult<T> globalExceptionHandler(HttpServletRequest request,Exception e){
-        log.error(request.getRequestURI()+"?"+request.getQueryString(), e);
+        log.error(request.getRequestURI(), e);
         return RestResultGenerator.genErrorResult(ResponseErrorEnum.INTERNAL_SERVER_ERROR);
 
     }
 
     @ExceptionHandler(UnexpectedTypeException.class)
     private <T> ResponseResult<T> illegalParamsExceptionHandler(HttpServletRequest request,UnexpectedTypeException e) {
-        log.error(request.getRequestURI()+"?"+request.getQueryString(), e);
+        log.error(request.getRequestURI(), e);
         return RestResultGenerator.genErrorResult(ResponseErrorEnum.ILLEGAL_PARAMS);
     }
 
     @ExceptionHandler(MyException.class)
     private <T> ResponseResult<T> myException(HttpServletRequest request,MyException e){
-        log.error(request.getRequestURI()+"?"+request.getQueryString(), e);
+        log.error(request.getRequestURI(), e);
         return RestResultGenerator.genErrorResult(e.getMessage());
     }
 
@@ -49,7 +49,7 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseResult validException(HttpServletRequest request, MethodArgumentNotValidException e){
-        log.error(request.getRequestURI()+"?"+request.getQueryString(), e);
+        log.error(request.getRequestURI(), e);
         List<ObjectError> errors =e.getBindingResult().getAllErrors();
         StringBuffer errorMsg = new StringBuffer();
         for (ObjectError error : errors) {
@@ -57,7 +57,6 @@ public class RestExceptionHandler {
         }
         return RestResultGenerator.genErrorResult(errorMsg.toString());
     }
-
 
 
 }

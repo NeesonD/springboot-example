@@ -1,4 +1,4 @@
-package com.neeson.example;
+package com.neeson.example.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

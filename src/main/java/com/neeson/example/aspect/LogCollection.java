@@ -28,9 +28,18 @@ import java.lang.reflect.Method;
 @Slf4j
 public class LogCollection {
 
-
+    /**
+     * 基于注解的切点
+     */
     @Pointcut("@annotation(com.neeson.example.annotation.ControllerLog)")
     public void controllerAspect() {
+    }
+
+    /**
+     * 表达式的切点
+     */
+    @Pointcut("execution(* com.neeson.example.controller..*(..)))")
+    public void aspect() {
     }
 
 //    @Before("controllerAspect()")
@@ -65,33 +74,32 @@ public class LogCollection {
 //        log.info("SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
 //    }
 
-    @Around("controllerAspect()")
+    @Around("aspect()")
     public Object logger(ProceedingJoinPoint pjp) throws Throwable {
-        Object proceed = null;
-        try {
-            long startTime = System.currentTimeMillis();
-            ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-            if (attributes == null) {
-                return "";
-            }
-            HttpServletRequest request = attributes.getRequest();
-            String IP = request.getRemoteAddr();
-            String localAddr = request.getLocalAddr();
-            String requestParam = getRequestParam(pjp);
-            String methodDesctiption = getMethodDesctiption(pjp);
-            log.info("请求参数：" + requestParam);
-            //执行目标方法
-            proceed = pjp.proceed();
+        Object proceed;
 
-            log.info("运行结果：" + proceed);
-            long endTime = System.currentTimeMillis();
-            long runTime = endTime - startTime;
-            log.info("运行时间：" + runTime);
-            return proceed;
-        } catch (Exception e) {
-            log.error("保存日志失败");
-            return proceed;
+        long startTime = System.currentTimeMillis();
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (attributes == null) {
+            return "";
         }
+        HttpServletRequest request = attributes.getRequest();
+        String IP = request.getRemoteAddr();
+        String localAddr = request.getLocalAddr();
+        String requestParam = getRequestParam(pjp);
+        //String methodDescription = getMethodDescription(pjp);
+        log.info("请求开始==========>" + request.getRequestURI());
+        log.info("请求地址：" + IP);
+        log.info("服务器地址："+localAddr);
+        log.info("请求参数：" + requestParam);
+        //执行目标方法
+        proceed = pjp.proceed();
+
+        log.info("运行结果：" + proceed);
+        long endTime = System.currentTimeMillis();
+        long runTime = endTime - startTime;
+        log.info(request.getRequestURI() + "==>请求结束===>运行时间：" + runTime);
+        return proceed;
     }
 
     private String getRequestParam(JoinPoint joinPoint) {

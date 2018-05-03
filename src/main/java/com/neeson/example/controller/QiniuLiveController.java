@@ -1,4 +1,4 @@
-package com.neeson.example.controller.deprecated;
+package com.neeson.example.controller;
 
 import com.neeson.example.dto.QiniuDTO;
 import com.neeson.example.properties.QiniuLiveProperties;
