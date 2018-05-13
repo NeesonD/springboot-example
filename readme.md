@@ -13,7 +13,7 @@
 |MyBatis Generator | 代码生成 | 
 |PageHelper | 分页| 
 |Druid | 数据库连接池|
-|FluentValidator| 数据验证|
+|HibernateValidator| 数据验证|
 |Redis| 缓存|
 |Elasticsearch| 搜索|
 |ActiveMQ | 消息队列|
@@ -36,7 +36,7 @@
 * activemq
 
 ### 自动化部署环境搭建
-jenkins+maven+git+shell
+jenkins+maven+git+shell+tomcat
 
 
 
