@@ -195,10 +195,6 @@ public class AliController {
     }
 
 
-    @Bean
-    public DefaultAcsClient initClient() {
-        IClientProfile profile = DefaultProfile.getProfile(aliLiveProperties.getRegionId(), aliLiveProperties.getAccesskey(), aliLiveProperties.getAccessSecret());
-        return new DefaultAcsClient(profile);
-    }
+
 
 }

@@ -12,6 +12,7 @@ import java.io.IOException;
  *
  * @author daile
  * @date 2017/8/15
+ * desc： 解决跨域
  */
 public class SpringFilter extends OncePerRequestFilter {
     @Override

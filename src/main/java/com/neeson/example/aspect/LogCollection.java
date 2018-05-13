@@ -22,6 +22,7 @@ import java.lang.reflect.Method;
  *
  * @author daile
  * @date 2017/8/14
+ * desc: 定义切点负责log监控
  */
 @Aspect
 @Component

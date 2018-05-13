@@ -14,7 +14,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
  * @author: neeson
  * Date: 2018/3/21
  * Time: 15:15
- * Description:
+ * Description: 处理返回值里面为null的字段
  */
 @Configuration
 public class JacksonConfig {
