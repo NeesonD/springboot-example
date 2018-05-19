@@ -9,12 +9,12 @@
 |Springboot | 开发容器 |
 |Mybatis | ORM框架 | 
 |MyBatis Generator | 代码生成 | 
-|PageHelper | 分页| 
+|PageHelper | 分页| TODO
 |Druid | 数据库连接池|
 |HibernateValidator| 数据验证|
 |Redis| 缓存|
-|Elasticsearch| 搜索|
-|ActiveMQ | 消息队列|
+|Elasticsearch| 搜索|TODO
+|ActiveMQ | 消息队列|TODO
 |Swagger2 | 接口测试框架|
 |qiniu| 云存储与直播|
 |Jenkins | 持续集成工具|
